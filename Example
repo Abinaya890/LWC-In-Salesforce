@@ -1,0 +1,17 @@
+<template>
+<lightning-card title="Name changer">
+    <div>Name : {DynoName}</div>
+    <lightning-input label="enter your name" onchange={namechangerfun}>
+    </lightning-input>
+</lightning-card>
+</template>
+
+
+
+import { LightningElement,track } from 'lwc';
+export default class InputLWC extends LightningElement {
+@track DynoName = 'please enter your name';
+namechangerfun(event){
+    this.DynoName=event.target.value;
+}
+}
