@@ -1,0 +1,28 @@
+<template>
+<lightning-card  variant="Narrow"  title="Hello" icon-name="standard:account">
+ <lightning-input type="checkbox" label="View Information" onchange={ViewInformation}>
+</lightning-input>
+<br/>
+<template if:true={displayinfo}>
+<div class="info">
+    Name  : abi <br/>
+    Age   : 23 <br/>
+    Email : abi@gmail.com <br/>
+</div>
+</template>
+<template if:false={displayinfo}>
+    <div>
+        To view the information click on checkbox
+    </div>
+</template>
+</lightning-card>
+</template>
+
+
+import { LightningElement, track } from 'lwc';
+export default class ViewInformation extends LightningElement {
+ @track displayinfo=false ;
+  ViewInformation(event){
+      this.displayinfo = event.target.checked;
+  }
+}
