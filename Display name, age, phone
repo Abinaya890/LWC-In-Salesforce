@@ -1,0 +1,44 @@
+<template>
+<lightning-card   title="Salesforce class">
+    <div>
+<lightning-input type="text" label="Name" onchange={NameChange}></lightning-input>
+  <lightning-input type="Number" label="Age" onchange={AgeChange}></lightning-input>
+  <lightning-input type="text" label="Phone" onchange={PhoneChange}></lightning-input> 
+   <lightning-button variant="base" label="Submit"  onclick={handleClick}></lightning-button>
+   <br/> <br/>
+    </div>
+  <div> Name : {nm} </div>
+  <div> Age : {ag} </div>
+  <div> Phone : {ph} </div>
+</lightning-card>
+</template>
+
+
+
+import { LightningElement, track } from 'lwc';
+export default class DisplayDetails extends LightningElement {
+@track Name;
+@track Age;
+@track Phone;
+@track nm;
+@track ag;
+@track ph;
+NameChange(event){
+    this.Name = event.target.value;
+}
+AgeChange(event){
+   this.Age = event.target.value;
+}
+PhoneChange(event){
+   this.Phone = event.target.value;
+}
+handleClick(){
+   this.nm= this.Name;
+  this.ag = this.Age; 
+   this.ph = this.Phone;
+   
+}
+}
+
+
+
