@@ -1,0 +1,65 @@
+<template>
+    <lightning-card title="Enter Name and Age">
+        <div class="slds-p-around_medium">
+            <lightning-input label="Name" value={name} onchange={handleNameChange}></lightning-input>
+            <lightning-input label="Age" type="number" value={age} onchange={handleAgeChange}></lightning-input>
+            <lightning-button label="Submit" onclick={handleSubmit} variant="brand"></lightning-button>
+        </div>
+    </lightning-card>
+
+    <template if:true={showPopup}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Submitted Data</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p>Name: {submittedName}</p>
+                    <p>Age: {submittedAge}</p>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button label="Close" onclick={closePopup} variant="neutral"></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>
+
+
+
+
+import { LightningElement, track } from 'lwc';
+
+export default class DisplayForm extends LightningElement {
+    @track name = '';
+    @track age = '';
+    @track submittedName = '';
+    @track submittedAge = '';
+    @track showPopup = false;
+
+    handleNameChange(event) {
+        this.name = event.target.value;
+    }
+
+    handleAgeChange(event) {
+        this.age = event.target.value;
+    }
+
+    handleSubmit() {
+        this.submittedName = this.name;
+        this.submittedAge = this.age;
+        this.showPopup = true;
+    }
+
+    closePopup() {
+        this.showPopup = false;
+    }
+}
+
+
+
+
+
+
