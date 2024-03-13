@@ -1,5 +1,5 @@
 <template>
-<lightning-card   title="Salesforce class">
+
     <div>
 <lightning-input type="text" label="Name" onchange={NameChange}></lightning-input>
   <lightning-input type="Number" label="Age" onchange={AgeChange}></lightning-input>
